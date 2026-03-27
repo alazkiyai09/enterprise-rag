@@ -43,7 +43,7 @@ except ImportError:
 from src.config import settings
 # Import security filter from shared utilities
 try:
-    from shared.security import SensitiveDataFilter
+    from src.core.security import SensitiveDataFilter
     SECURITY_AVAILABLE = True
 except ImportError:
     SECURITY_AVAILABLE = False

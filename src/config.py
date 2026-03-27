@@ -80,7 +80,7 @@ class Settings(BaseSettings):
         description="Model name for cross-encoder reranking",
     )
     LLM_MODEL: str = Field(
-        default="glm-4.7",
+        default="glm-5.1",
         description="LLM model for response generation",
     )
     LLM_TEMPERATURE: float = Field(

@@ -48,3 +48,9 @@ async def delete_document(document_id: str, request: Request) -> dict[str, str]:
     if removed.get("content_hash"):
         request.app.state.document_hashes.discard(removed["content_hash"])
     return {"status": "deleted", "document_id": document_id}
+
+
+@router.delete("/{id}")
+async def delete_document_by_id(id: str, request: Request) -> dict[str, str]:
+    """Compatibility alias for plan endpoint shape."""
+    return await delete_document(document_id=id, request=request)

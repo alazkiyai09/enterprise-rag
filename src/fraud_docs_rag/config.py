@@ -168,35 +168,35 @@ class Settings(BaseSettings):
     )
 
     # =========================================================================
-    # GLM-4 Settings (Demo/Production)
+    # GLM Settings (Demo/Production)
     # =========================================================================
     ZHIPUAI_API_KEY: str = Field(
         default="",
-        description="ZhipuAI API key for GLM-4"
+        description="ZhipuAI API key for GLM"
     )
     GLM_BASE_URL: str = Field(
-        default="https://open.bigmodel.cn/api/paas/v4",
-        description="GLM-4 API base URL"
+        default="https://api.z.ai/api/anthropic",
+        description="GLM API base URL"
     )
     GLM_MODEL: str = Field(
-        default="glm-4-plus",
-        description="GLM-4 model name"
+        default="glm-5.1",
+        description="GLM model name"
     )
     GLM_TEMPERATURE: float = Field(
         default=0.7,
         ge=0.0,
         le=2.0,
-        description="GLM-4 temperature"
+        description="GLM temperature"
     )
     GLM_MAX_TOKENS: int = Field(
         default=4096,
         ge=1,
-        description="GLM-4 max tokens"
+        description="GLM max tokens"
     )
     GLM_TIMEOUT: int = Field(
         default=300,
         ge=1,
-        description="GLM-4 request timeout (seconds)"
+        description="GLM request timeout (seconds)"
     )
 
     # =========================================================================

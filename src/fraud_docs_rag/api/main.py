@@ -26,9 +26,9 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, field_validator
 
 # Shared modules
-from shared.security import SensitiveDataFilter, install_security_filter
-from shared.rate_limit import limiter, rate_limit_exception_handler, RateLimitExceeded
-from shared.auth import (
+from src.core.security import SensitiveDataFilter, install_security_filter
+from src.core.rate_limit import limiter, rate_limit_exception_handler, RateLimitExceeded
+from src.core.auth import (
     get_current_user,
     require_role,
     require_admin,
@@ -42,7 +42,7 @@ from shared.auth import (
     Role,
     InMemoryUserStore,
 )
-from shared.errors import (
+from src.core.errors import (
     register_error_handlers,
     AuthenticationError,
     AuthorizationError,
@@ -50,7 +50,7 @@ from shared.errors import (
     DatabaseError,
     ExternalAPIError,
 )
-from shared.secrets import get_settings
+from src.core.secrets import get_settings
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -591,7 +591,7 @@ async def login(
     password: str = Form(...),
 ):
     """Login and receive access token."""
-    from shared.auth import authenticate_user, login_user
+    from src.core.auth import authenticate_user, login_user
 
     user = await authenticate_user(username, password, user_store)
     if not user:
@@ -612,7 +612,7 @@ async def refresh(
     refresh_token: str = Form(...),
 ):
     """Refresh access token."""
-    from shared.auth import refresh_user_token
+    from src.core.auth import refresh_user_token
 
     token_data = await refresh_user_token(refresh_token, user_store)
     if not token_data:

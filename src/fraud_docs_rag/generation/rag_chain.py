@@ -120,7 +120,7 @@ class RAGChain:
         },
         Environment.DEMO: {
             "provider": "openai_compatible",
-            "model": "glm-5",  # GLM-5 model
+            "model": "glm-5.1",  # GLM model
             "base_url": "https://api.z.ai/api/anthropic",  # Z.ai API endpoint
             "api_key_env": "ZHIPUAI_API_KEY",
             "temperature": 0.7,
@@ -796,7 +796,7 @@ class OpenAICompatibleLLM(CustomLLM):
     Bypasses llama-index's strict model name validation.
     """
 
-    model: str = "glm-5"
+    model: str = "glm-5.1"
     api_key: str = ""
     base_url: str = ""
     temperature: float = 0.7
